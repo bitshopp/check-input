@@ -1,0 +1,36 @@
+name: Check input
+description: Check if a input is in inputs
+inputs:
+  inputs:
+    description: inputs for check input
+    required: true
+  input:
+    description: input
+    required: true
+  input-name:
+    description: input name
+    required: false
+    default: 'input'
+runs:
+    using: "composite"
+    steps:
+    - name: Check input
+      shell: bash
+      run: |
+        echo "Checking if '$INPUT' is valid"
+        
+        inputs=($INPUTS)
+        
+        declare -A inputsMap
+        for i in ${inputs[@]}; do
+          inputsMap["$i"]=1
+        done
+        
+        if ! [[ ${inputsMap["$INPUT"]} ]] ; then
+          echo "$INPUT_NAME '$INPUT' don't exist in $INPUTS"
+          exit 1
+        fi
+      env:
+        INPUTS: ${{ inputs.inputs }}
+        INPUT: ${{ inputs.input }}
+        INPUT_NAME: ${{ inputs.input-name }}
