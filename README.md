@@ -14,3 +14,8 @@ For check some inputs when use [`workflow_dispatch` with `inputs`](https://githu
     input: ${{ github.event.inputs.env }}
     input-name: 'Environment'
 ```
+- `inputs` are the possible values to be check
+- `input` is the input to be check
+- `input-name` is the name of input for good feedback messages
+
+--
