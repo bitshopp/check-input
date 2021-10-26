@@ -1,7 +1,7 @@
 name: Check input
 description: Check if a input is in inputs
-icon: check
-color: balck
+icon: "check"
+color: "black"
 inputs:
   inputs:
     description: inputs for check input
